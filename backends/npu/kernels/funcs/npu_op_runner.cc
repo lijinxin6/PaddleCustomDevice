@@ -46,6 +46,7 @@ FLAGS_DEFINE_bool(
     npu_storage_format,
     false,
     "Enable NPU Storage Format for Ascend910 performance improvement.");
+FLAGS_DEFINE_bool(npu_unittest_run, false, "enable the ut testcase mode");
 
 NpuOpRunner::NpuOpRunner() {}
 

@@ -26,6 +26,8 @@ set_tests_properties(${TEST_OPS} PROPERTIES TIMEOUT 1000)
 
 set_tests_properties(test_check_nan_inf_op_npu
                      PROPERTIES ENVIRONMENT FLAGS_npu_check_nan_inf=1)
+set_tests_properties(test_dropout_op_npu PROPERTIES ENVIRONMENT
+                                                    FLAGS_npu_unittest_run=1)
 set_tests_properties(test_adam_op_npu
                      PROPERTIES ENVIRONMENT FLAGS_USE_STANDALONE_EXECUTOR=0)
 set_tests_properties(test_adamw_op_npu

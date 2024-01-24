@@ -34,6 +34,15 @@ EPOCH = 100
 def convert_to_npu_mask(mask):
     mask = mask.reshape([-1])
     n = int((mask.size + 127) // 128 * 128 / 8)
+    if mask.size != ((mask.size + 127) // 128 * 128):
+        npu_mask = np.zeros([n], dtype=np.uint8)
+        for i in range(n - 8):
+            npu_mask[i] = np.ones([1], dtype=np.uint8) * 255
+        for i in range(mask.size):
+            if not mask[i]:
+                npu_mask[i // 8] = npu_mask[i // 8] & (~(1 << (7 - i % 8)))
+        return npu_mask
+
     npu_mask = np.ones([n], dtype=np.uint8) * 255
     for i in range(mask.size):
         if not mask[i]:

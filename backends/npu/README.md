@@ -117,11 +117,12 @@ Output data shape is (1, 10)
 
 
 | Subject     | Variable Name       | Type   | Description    | Default Value |
-| -------- | -------------------------------- | ------ | --------------------------------- | ------------------------------------------------------------ |
-| Debug     | CUSTOM_DEVICE_BLACK_LIST| String | Ops in back list will fallbacks to CPU  |  ""  |
-| Debug     | FLAGS_npu_check_nan_inf | Bool   | check nan or inf of all npu kernels | False                                                       |
-| Debug     | FLAGS_npu_blocking_run | Bool   | enable sync for all npu kernels | False                                                     |
-| Profiling | FLAGS_npu_profiling_dir | String |   ACL profiling output dir     | "ascend_profiling"                                           |
-| Profiling | FLAGS_npu_profiling_dtypes | Uint64 | ACL datatypes to profile | Refer to [runtime.cc](https://github.com/PaddlePaddle/PaddleCustomDevice/blob/develop/backends/npu/runtime/runtime.cc#L31) |
-| Profiling | FLAGS_npu_profiling_metrics | Uint64 | AI Core metric to profile  | Refer to [runtime.cc](https://github.com/PaddlePaddle/PaddleCustomDevice/blob/develop/backends/npu/runtime/runtime.cc#L36) |
+|-------------| -------------------------------- | ------ | --------------------------------- | ------------------------------------------------------------ |
+| Debug       | CUSTOM_DEVICE_BLACK_LIST| String | Ops in back list will fallbacks to CPU  |  ""  |
+| Debug       | FLAGS_npu_check_nan_inf | Bool   | check nan or inf of all npu kernels | False                                                       |
+| Debug       | FLAGS_npu_blocking_run | Bool   | enable sync for all npu kernels | False                                                     |
+| Profiling   | FLAGS_npu_profiling_dir | String |   ACL profiling output dir     | "ascend_profiling"                                           |
+| Profiling   | FLAGS_npu_profiling_dtypes | Uint64 | ACL datatypes to profile | Refer to [runtime.cc](https://github.com/PaddlePaddle/PaddleCustomDevice/blob/develop/backends/npu/runtime/runtime.cc#L31) |
+| Profiling   | FLAGS_npu_profiling_metrics | Uint64 | AI Core metric to profile  | Refer to [runtime.cc](https://github.com/PaddlePaddle/PaddleCustomDevice/blob/develop/backends/npu/runtime/runtime.cc#L36) |
 | Performance | FLAGS_npu_storage_format         | Bool   | enable Conv/BN private ACL format | False                                                        |
+| Unittest    | FLAGS_npu_unittest_run         | Bool   | enable the ut testcase mode | False                                                        |

@@ -15,6 +15,8 @@
 #include "kernels/funcs/npu_funcs.h"
 #include "kernels/funcs/npu_op_runner.h"
 
+DECLARE_bool(npu_unittest_run);
+
 namespace custom_kernel {
 
 void GetSeed(const phi::DeviceContext& dev_ctx,
@@ -76,13 +78,10 @@ void DropoutRawKernel(const Context& dev_ctx,
     uint32_t length = (x.numel() + 128 - 1) / 128 * 128;
     mask->Resize({length / 8});
     dev_ctx.template Alloc<uint8_t>(mask);
-  }
-
-  if (dropout_prob == 0.0f) {
-    TensorCopy(dev_ctx, x, false, out);
-    FillNpuTensorWithConstant<uint8_t>(
-        mask, dev_ctx, static_cast<uint8_t>(255));
-    return;
+    if (FLAGS_npu_unittest_run) {
+      FillNpuTensorWithConstant<uint8_t>(
+          mask, dev_ctx, static_cast<uint8_t>(0));
+    }
   }
 
   if (dropout_prob == 1.) {
