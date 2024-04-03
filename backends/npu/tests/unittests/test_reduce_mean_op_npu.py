@@ -30,15 +30,29 @@ class TestMeanOp(OpTest):
 
     def setUp(self):
         self.set_npu()
+        self.init_data()
         self.op_type = "reduce_mean"
-        self.inputs = {"X": np.random.random((5, 6, 10)).astype("float32")}
+        self.inputs = {"X": self.x}
         self.outputs = {"Out": self.inputs["X"].mean(axis=0)}
+
+    def init_data(self):
+        self.x = np.random.random((5, 6, 10)).astype("float32")
 
     def test_check_output(self):
         self.check_output_with_place(paddle.CustomPlace("npu", 0))
 
     def test_check_grad(self):
         self.check_grad_with_place(paddle.CustomPlace("npu", 0), ["X"], "Out")
+
+
+class TestMeanOpRank1(TestMeanOp):
+    def init_data(self):
+        self.x = np.random.random((2, 4096, 1)).astype("float32")
+
+
+class TestMeanOpRank2(TestMeanOp):
+    def init_data(self):
+        self.x = np.random.random((8, 1)).astype("float32")
 
 
 class TestMeanOpFP16(OpTest):
