@@ -88,6 +88,36 @@ class TestReduceSumOp5D(TestReduceSum):
         self.axis = (-1, -2)
 
 
+class TestReduceSumOpRank1(TestReduceSum):
+    def initTestCase(self):
+        self.shape = (2, 4096, 1)
+        self.axis = (0,)
+
+
+class TestReduceSumOpRank2(TestReduceSum):
+    def initTestCase(self):
+        self.shape = (2, 8192, 4000)
+        self.axis = (0,)
+
+
+class TestReduceSumOpRank3(TestReduceSum):
+    def initTestCase(self):
+        self.shape = (3, 1)
+        self.axis = (0,)
+
+
+class TestReduceSumOpRank4(TestReduceSum):
+    def initTestCase(self):
+        self.shape = (6, 1)
+        self.axis = (0,)
+
+
+class TestReduceSumOpRank5(TestReduceSum):
+    def initTestCase(self):
+        self.shape = (6, 1)
+        self.axis = (0,)
+
+
 class TestKeepDimReduce(TestReduceSum):
     def init_op_type(self):
         self.op_type = "reduce_sum"
