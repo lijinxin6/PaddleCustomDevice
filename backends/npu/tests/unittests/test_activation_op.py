@@ -1315,6 +1315,11 @@ class TestSilu_ZeroDim(TestSilu):
         self.shape = []
 
 
+class TestSiluRank1(TestSilu):
+    def init_shape(self):
+        self.shape = [8192, 3584]
+
+
 class TestSiluAPI(unittest.TestCase):
     # test paddle.nn.Silu, paddle.nn.functional.silu
     def setUp(self):

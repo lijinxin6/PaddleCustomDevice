@@ -114,7 +114,7 @@ class TestReduceSumOpRank4(TestReduceSum):
 
 class TestReduceSumOpRank5(TestReduceSum):
     def initTestCase(self):
-        self.shape = (6, 1)
+        self.shape = (8192, 4000)
         self.axis = (0,)
 
 
