@@ -104,6 +104,13 @@ class TestStackOp6(TestStackOpBase):
         self.axis = 3
 
 
+class TestStackOp7(TestStackOpBase):
+    def initParameters(self):
+        self.num_inputs = 1
+        self.input_dim = 1
+        self.axis = 1
+
+
 class TestStackOpINT32(TestStackOpBase):
     def init_dtype(self):
         self.dtype = np.int32
