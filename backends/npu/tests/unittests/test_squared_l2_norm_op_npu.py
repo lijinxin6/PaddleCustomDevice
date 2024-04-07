@@ -28,17 +28,21 @@ class TestL2LossOp(OpTest):
 
     def setUp(self):
         self.set_npu()
+        self.init_shape()
         self.place = paddle.CustomPlace("npu", 0)
         self.op_type = "squared_l2_norm"
         self.max_relative_error = 0.05
 
-        X = np.random.uniform(-1, 1, (13, 19)).astype("float32")
+        X = np.random.uniform(-1, 1, self.shape).astype("float32")
         X[np.abs(X) < self.max_relative_error] = 0.1
         self.inputs = {"X": X}
         self.outputs = {"Out": np.array([np.square(LA.norm(X))])}
 
     def set_npu(self):
         self.__class__.use_custom_device = True
+
+    def init_shape(self):
+        self.shape = (13, 19)
 
     def test_check_output(self):
         self.check_output_with_place(place=self.place)
@@ -47,6 +51,41 @@ class TestL2LossOp(OpTest):
         self.check_grad_with_place(
             self.place, ["X"], "Out", max_relative_error=self.max_relative_error
         )
+
+
+class TestL2LossOpRank1(OpTest):
+    def init_shape(self):
+        self.shape = (4000, 8192)
+
+
+class TestL2LossOpRank2(OpTest):
+    def init_shape(self):
+        self.shape = (8192, 1280)
+
+
+class TestL2LossOpRank3(OpTest):
+    def init_shape(self):
+        self.shape = (1024, 8192)
+
+
+class TestL2LossOpRank4(OpTest):
+    def init_shape(self):
+        self.shape = (8192, 7168)
+
+
+class TestL2LossOpRank5(OpTest):
+    def init_shape(self):
+        self.shape = (3584, 8192)
+
+
+class TestL2LossOpRank6(OpTest):
+    def init_shape(self):
+        self.shape = 8192
+
+
+class TestL2LossOpRank7(OpTest):
+    def init_shape(self):
+        self.shape = (8192, 4000)
 
 
 class TestL2LossOpFp16(OpTest):
