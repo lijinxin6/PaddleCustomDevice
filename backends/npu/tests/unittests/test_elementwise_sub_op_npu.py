@@ -103,6 +103,13 @@ class TestElementwiseSubOpRank2(TestElementwiseSubOp):
         self.out = np.subtract(self.x, self.y)
 
 
+class TestElementwiseSubOpRank3(TestElementwiseSubOp):
+    def init_input_output(self):
+        self.x = np.random.uniform(0.1, 1, [8192]).astype(self.dtype)
+        self.y = np.random.uniform(0.1, 1, [8192]).astype(self.dtype)
+        self.out = np.subtract(self.x, self.y)
+
+
 class TestElementwiseSubOpInt32(TestElementwiseSubOp):
     def init_dtype(self):
         self.dtype = np.int32
