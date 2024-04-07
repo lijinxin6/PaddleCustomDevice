@@ -798,6 +798,11 @@ class TestSqrt(TestActivation):
         self.check_output_with_place(self.place, check_dygraph=True)
 
 
+class TestSqrtRank(TestSqrt):
+    def init_shape(self):
+        self.shape = [1]
+
+
 class TestSqrt_ZeroDim(TestSqrt):
     def init_shape(self):
         self.shape = []
