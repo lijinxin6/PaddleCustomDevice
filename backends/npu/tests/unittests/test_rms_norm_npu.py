@@ -35,10 +35,13 @@ logging.basicConfig(format="%(asctime)s - %(levelname)s - %(message)s")
 class TestNPURMSNormFP32(unittest.TestCase):
     def setUp(self):
         self.place = paddle.CustomPlace("npu", 0)
-        self.x_shape = (10, 128)
-        self.gamma_shape = (128,)
+        self.init_shape()
         self.eps = 1e-6
         self.init_dtype()
+
+    def init_shape(self):
+        self.x_shape = (10, 128)
+        self.gamma_shape = (128,)
 
     def init_dtype(self):
         self.dtype = "float32"
@@ -126,6 +129,12 @@ class TestNPURMSNormFP32(unittest.TestCase):
 class TestNPURMSNormFP16(TestNPURMSNormFP32):
     def init_dtype(self):
         self.dtype = "float16"
+
+
+class TestNPURMSNormRank1(TestNPURMSNormFP32):
+    def init_shape(self):
+        self.x_shape = (1024, 8192)
+        self.gamma_shape = (8192,)
 
 
 class TestNPURMSNormBF16(TestNPURMSNormFP32):
