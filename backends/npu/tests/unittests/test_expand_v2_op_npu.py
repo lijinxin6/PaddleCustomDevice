@@ -98,6 +98,27 @@ class TestExpandV2OpRank6(TestExpandV2NPUOpRank1):
         self.expand_times = (2, 1, 4, 1)
 
 
+class TestExpandV2OpRank7(TestExpandV2NPUOpRank1):
+    def init_data(self):
+        self.ori_shape = [1, 1, 4096, 4096]
+        self.shape = [2, 1, 4096, 4096]
+        self.expand_times = [2, 1, 1, 1]
+
+
+class TestExpandV2OpRank8(TestExpandV2NPUOpRank1):
+    def init_data(self):
+        self.ori_shape = [2, 1, 1, 4096]
+        self.shape = [2, 1, 4096, 4096]
+        self.expand_times = [1, 1, 4096, 1]
+
+
+class TestExpandV2OpRank9(TestExpandV2NPUOpRank1):
+    def init_data(self):
+        self.ori_shape = [4096]
+        self.shape = [2, 4096]
+        self.expand_times = [2, 1]
+
+
 # Situation 2: shape is a list(with tensor)
 class TestExpandV2OpNPURank1_tensor_attr(OpTest):
     def setUp(self):
