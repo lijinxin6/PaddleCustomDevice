@@ -67,6 +67,55 @@ class ElementwiseMulOp(OpTest):
         pass
 
 
+class TestElementwiseMulOpRank0(ElementwiseMulOp):
+    def init_input_output(self):
+        self.x = np.random.uniform(0.1, 1, [4000, 8192]).astype(self.dtype)
+        self.y = np.random.uniform(0.1, 1, [1]).astype(self.dtype)
+        self.out = np.multiply(self.x, self.y)
+
+
+class TestElementwiseMulOpRank0(ElementwiseMulOp):
+    def init_input_output(self):
+        self.x = np.random.uniform(0.1, 1, [1]).astype(self.dtype)
+        self.y = np.random.uniform(0.1, 1, [1]).astype(self.dtype)
+        self.out = np.multiply(self.x, self.y)
+
+
+class TestElementwiseMulOpRank2(ElementwiseMulOp):
+    def init_input_output(self):
+        self.x = np.random.uniform(0.1, 1, [8192, 1280]).astype(self.dtype)
+        self.y = np.random.uniform(0.1, 1, [1]).astype(self.dtype)
+        self.out = np.multiply(self.x, self.y)
+
+
+class TestElementwiseMulOpRank3(ElementwiseMulOp):
+    def init_input_output(self):
+        self.x = np.random.uniform(0.1, 1, [1024, 8192]).astype(self.dtype)
+        self.y = np.random.uniform(0.1, 1, [1]).astype(self.dtype)
+        self.out = np.multiply(self.x, self.y)
+
+
+class TestElementwiseMulOpRank4(ElementwiseMulOp):
+    def init_input_output(self):
+        self.x = np.random.uniform(0.1, 1, [8192, 7168]).astype(self.dtype)
+        self.y = np.random.uniform(0.1, 1, [1]).astype(self.dtype)
+        self.out = np.multiply(self.x, self.y)
+
+
+class TestElementwiseMulOpRank4(ElementwiseMulOp):
+    def init_input_output(self):
+        self.x = np.random.uniform(0.1, 1, [3584, 8192]).astype(self.dtype)
+        self.y = np.random.uniform(0.1, 1, [1]).astype(self.dtype)
+        self.out = np.multiply(self.x, self.y)
+
+
+class TestElementwiseMulOpRank5(ElementwiseMulOp):
+    def init_input_output(self):
+        self.x = np.random.uniform(0.1, 1, [8192, 4000]).astype(self.dtype)
+        self.y = np.random.uniform(0.1, 1, [1]).astype(self.dtype)
+        self.out = np.multiply(self.x, self.y)
+
+
 @skip_check_grad_ci(reason="[skip shape check] Use y_shape(1) to test broadcast.")
 class TestElementwiseMulOp_scalar(ElementwiseMulOp):
     def setUp(self):
