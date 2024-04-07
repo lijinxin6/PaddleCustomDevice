@@ -72,5 +72,16 @@ class TestSliceOpBF16Tensor(OpTest):
         )
 
 
+class TestTestSliceOpBF16Rank(TestSliceOpBF16Tensor):
+    def config(self):
+        np_input = np.random.random([8192, 8192]).astype("float32")
+        self.input = convert_float_to_uint16(np_input)
+        self.starts = np.array([2]).astype("int32")
+        self.ends = np.array([2]).astype("int32")
+        self.axes = [1]
+        self.infer_flags = [-1]
+        self.out = convert_uint16_to_float(self.input)[:, 0:1, :]
+
+
 if __name__ == "__main__":
     unittest.main()
