@@ -102,14 +102,14 @@ class TestElementwiseMulOpRank4(ElementwiseMulOp):
         self.out = np.multiply(self.x, self.y)
 
 
-class TestElementwiseMulOpRank4(ElementwiseMulOp):
+class TestElementwiseMulOpRank5(ElementwiseMulOp):
     def init_input_output(self):
         self.x = np.random.uniform(0.1, 1, [3584, 8192]).astype(self.dtype)
         self.y = np.random.uniform(0.1, 1, [1]).astype(self.dtype)
         self.out = np.multiply(self.x, self.y)
 
 
-class TestElementwiseMulOpRank5(ElementwiseMulOp):
+class TestElementwiseMulOpRank6(ElementwiseMulOp):
     def init_input_output(self):
         self.x = np.random.uniform(0.1, 1, [8192, 4000]).astype(self.dtype)
         self.y = np.random.uniform(0.1, 1, [1]).astype(self.dtype)
