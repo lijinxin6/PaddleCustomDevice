@@ -75,6 +75,22 @@ class TestNPUTrilTriu(OpTest):
         self.X = np.arange(1, 101, dtype=self.dtype).reshape([10, -1])
 
 
+class TestNPUTrilTriuRank1(TestNPUTrilTriu):
+    def initTestCase(self):
+        self.real_op_type = np.random.choice(["triu", "tril"])
+        self.diagonal = None
+        self.X = np.arange(0, 4096 * 4096, dtype=self.dtype).reshape([4096, 4096])
+
+
+class TestNPUTrilTriuRank2(TestNPUTrilTriu):
+    def initTestCase(self):
+        self.real_op_type = np.random.choice(["triu", "tril"])
+        self.diagonal = None
+        self.X = np.arange(0, 2 * 1 * 4096 * 4096, dtype=self.dtype).reshape(
+            [2, 1, 4096, 4096]
+        )
+
+
 class TestNPUTrilTriuFP16(TestNPUTrilTriu):
     def init_dtype(self):
         self.dtype = np.float16
