@@ -66,5 +66,23 @@ class TestNPUSplitOpBF16(OpTest):
         pass
 
 
+class TestNPUSplitOpRank1(TestNPUSplitOpBF16):
+    def init_data(self):
+        self.x = np.random.random((2, 4096, 1, 1280)).astype(self.dtype)
+        self.axis = 2
+        self.sections = []
+        self.num = 3
+        self.indices_or_sections = 3
+
+
+class TestNPUSplitOpRank2(TestNPUSplitOpBF16):
+    def init_data(self):
+        self.x = np.random.random((8192, 7168)).astype(self.dtype)
+        self.axis = 2
+        self.sections = []
+        self.num = 3
+        self.indices_or_sections = 3
+
+
 if __name__ == "__main__":
     unittest.main()
