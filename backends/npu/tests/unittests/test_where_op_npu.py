@@ -63,6 +63,20 @@ class TestNPUWhereOp3(TestNPUWhereOp):
         self.cond = np.array(np.random.randint(2, size=(20, 2, 4)), dtype=bool)
 
 
+class TestNPUWhereOp4(TestNPUWhereOp):
+    def init_config(self):
+        self.x = np.random.uniform(-3, 5, (2, 1, 4096, 4096)).astype("float64")
+        self.y = np.random.uniform(-3, 5, (2, 1, 4096, 4096)).astype("float64")
+        self.cond = np.array(np.random.randint(2, size=(2, 1, 4096, 4096)), dtype=bool)
+
+
+class TestNPUWhereOp5(TestNPUWhereOp):
+    def init_config(self):
+        self.x = np.random.uniform(-3, 5, (2, 4096, 1)).astype("float64")
+        self.y = np.random.uniform(-3, 5, (2, 4096, 1)).astype("float64")
+        self.cond = np.array(np.random.randint(2, size=(2, 4096, 1)), dtype=bool)
+
+
 class TestNPUWhereFp16(TestNPUWhereOp):
     def init_config(self):
         self.x = np.random.uniform(-5, 5, (60, 2)).astype("float16")
