@@ -53,37 +53,37 @@ class TestL2LossOp(OpTest):
         )
 
 
-class TestL2LossOpRank1(OpTest):
+class TestL2LossOpRank1(TestL2LossOp):
     def init_shape(self):
         self.shape = (4000, 8192)
 
 
-class TestL2LossOpRank2(OpTest):
+class TestL2LossOpRank2(TestL2LossOp):
     def init_shape(self):
         self.shape = (8192, 1280)
 
 
-class TestL2LossOpRank3(OpTest):
+class TestL2LossOpRank3(TestL2LossOp):
     def init_shape(self):
         self.shape = (1024, 8192)
 
 
-class TestL2LossOpRank4(OpTest):
+class TestL2LossOpRank4(TestL2LossOp):
     def init_shape(self):
         self.shape = (8192, 7168)
 
 
-class TestL2LossOpRank5(OpTest):
+class TestL2LossOpRank5(TestL2LossOp):
     def init_shape(self):
         self.shape = (3584, 8192)
 
 
-class TestL2LossOpRank6(OpTest):
+class TestL2LossOpRank6(TestL2LossOp):
     def init_shape(self):
         self.shape = 8192
 
 
-class TestL2LossOpRank7(OpTest):
+class TestL2LossOpRank7(TestL2LossOp):
     def init_shape(self):
         self.shape = (8192, 4000)
 
