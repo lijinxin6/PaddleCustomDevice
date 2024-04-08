@@ -59,5 +59,17 @@ class TestTransposeOp(OpTest):
         self.check_grad_with_place(self.place, ["X"], "Out")
 
 
+class TestTransposeOpRank1(TestTransposeOp):
+    def init_shape_axis(self):
+        self.shape = (3584, 8192)
+        self.axis = (1, 0)
+
+
+class TestTransposeOpRank2(TestTransposeOp):
+    def init_shape_axis(self):
+        self.shape = (1024, 8192)
+        self.axis = (1, 0)
+
+
 if __name__ == "__main__":
     unittest.main()
